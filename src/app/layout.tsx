@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,12 +12,33 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html
+      className="min-h-full m-0 p-0 text-darkBlueText dark:text-white bg-lightGray dark:bg-darkBlueBG"
+      lang="en"
+    >
+      <body className="min-h-full m-0 p-0">
+        <div className="flex justify-between items-center w-full py-lg px-screen bg-white dark:bg-blue">
+          <h1 className="text-2xl flex flex-col md:flex-row font-bold">
+            Where in the world?
+          </h1>
+          <div className="flex items-center h-fit">
+            <Image
+              width={20}
+              height={20}
+              src="/icon-moon.svg"
+              alt="Light Mode"
+            />
+            <p className="inherit justify-inherit items-inherit font-sm w-full z-2 pl-xs">
+              Dark Mode
+            </p>
+          </div>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
