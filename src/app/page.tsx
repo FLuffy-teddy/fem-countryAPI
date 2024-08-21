@@ -26,7 +26,7 @@ export default async function Home() {
         /> */}
       </div>
 
-      <div className="grid gap-12 m-auto grid-rows-fr grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:max-w-[320px] md:max-w-full">
+      <div className="grid gap-12 m-auto grid-rows-fr grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-[320px] md:max-w-full">
         {data.map((post: any, i: number) => {
           return (
             <Card
