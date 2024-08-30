@@ -31,11 +31,19 @@ export default async function CountryPage({ params }: any) {
 
   const countryPop = numberWithCommas(country[0].population);
   return (
-    <div className="flex flex-col min-h-full pb-xl max-w-screen-xl m-auto px-screen">
-      <Link href="/" className="w-fit">
-        <p className="max-w-fit my-xl py-md px-xl lg:px-screen border-none rounded bg-white dark:bg-blue placeholder:text-darkBlueText dark:placeholder:text-white">
-          Back
-        </p>
+    <div className="flex flex-col min-h-full pb-xl max-w-screen-xl m-auto px-screen text-black dark:text-white">
+      <Link
+        href="/"
+        className="w-fit max-w-fit my-xl py-sm px-xl lg:px-screen border-none rounded bg-white dark:bg-blue dark:text-white shadow-md flex hover:ring hover:bg-blue dark:hover:bg-white hover:text-white dark:hover:text-black"
+      >
+        <Image
+          className=""
+          width={20}
+          height={20}
+          src="/arrow-back.svg"
+          alt="Back Arrow"
+        />
+        <p>Back</p>
       </Link>
       <div className="grid grid-auto-fr lg:grid-cols-2 grid-cols-1">
         <div className="relative w-full lg:w-11/12 lg:h-auto h-[400px] m-auto">
@@ -51,31 +59,33 @@ export default async function CountryPage({ params }: any) {
           <h2 className="py-md text-2xl font-bold">{country[0].name.common}</h2>
           <div className="grid grid-auto-fr grid-cols-2">
             <div className="relative w-11/12 h-auto mr-auto">
-              <h3 className="font-lg py-xxs text-white">
+              <h3 className="font-lg py-xxs text-black dark:text-white">
                 Native Name:{" "}
-                <span className="text-lightGray opacity-60">
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
                   {country[0].name.common}
                 </span>
               </h3>
-              <h3 className="font-lg py-xxs text-white">
+              <h3 className="font-lg py-xxs text-black dark:text-white">
                 Population:{" "}
-                <span className="text-lightGray opacity-60">{countryPop}</span>
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
+                  {countryPop}
+                </span>
               </h3>
-              <h3 className="font-lg py-xxs text-white">
+              <h3 className="font-lg py-xxs text-black dark:text-white">
                 Region:{" "}
-                <span className="text-lightGray opacity-60">
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
                   {country[0].region}
                 </span>
               </h3>
-              <h3 className="font-lg py-xxs text-white">
+              <h3 className="font-lg py-xxs text-black dark:text-white">
                 Sub Region:{" "}
-                <span className="text-lightGray opacity-60">
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
                   {country[0].subregion}
                 </span>
               </h3>
-              <h3 className="font-lg py-xxs text-white">
+              <h3 className="font-lg py-xxs text-black dark:text-white">
                 Capital:{" "}
-                <span className="text-lightGray opacity-60">
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
                   {country[0].capital}
                 </span>
               </h3>
@@ -83,13 +93,13 @@ export default async function CountryPage({ params }: any) {
             <div className="w-full ml-auto flex flex-col py-xxl">
               <h2 className="font-lg py-xxs">
                 Top Level Domain:{" "}
-                <span className="text-lightGray opacity-60">
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
                   {country[0].tld[0]}
                 </span>
               </h2>
               <h2 className="font-lg py-xxs">
                 Currencies:{" "}
-                <span className="text-lightGray opacity-60">
+                <span className="text-slate-700 dark:text-lightGray opacity-60">
                   {currencyObject[0].name}
                 </span>
               </h2>
@@ -98,7 +108,10 @@ export default async function CountryPage({ params }: any) {
                 <span>
                   {languageArray.map((item: string, i: number) => {
                     return (
-                      <span className="text-lightGray opacity-60" key={i}>
+                      <span
+                        className="text-slate-700 dark:text-lightGray opacity-60"
+                        key={i}
+                      >
                         {item}
                         {i > 1 ? <span>, </span> : <span></span>}
                       </span>
@@ -108,22 +121,24 @@ export default async function CountryPage({ params }: any) {
               </h2>
             </div>
           </div>
-          <div className="flex flex-wrap gap-x-2">
-            <h3 className="flex items-center">Border Countries: </h3>
-            {country[0].borders.map((border: string, i: number) => {
-              return (
-                <Link
-                  href={`/country/${borderCountries[i].name.common}`}
-                  className="my-md"
-                  key={i}
-                >
-                  <span className="max-w-fit my-md py-sm px-xl border-none rounded bg-white dark:bg-blue placeholder:text-darkBlueText dark:placeholder:text-white">
-                    {borderCountries[i].name.common}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+          {country[0].borders ? (
+            <div className="flex flex-wrap gap-x-2">
+              <h3 className="flex items-center">Border Countries: </h3>
+              {country[0].borders.map((border: string, i: number) => {
+                return (
+                  <Link
+                    href={`/country/${borderCountries[i].name.common}`}
+                    className="my-md"
+                    key={i}
+                  >
+                    <span className="max-w-fit my-md py-sm px-xl border-none rounded bg-white dark:bg-blue placeholder:text-darkBlueText dark:placeholder:text-black dark:text-white">
+                      {borderCountries[i].name.common}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

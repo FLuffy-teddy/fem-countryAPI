@@ -34,7 +34,7 @@ export default function Card({
   const countryPop = numberWithCommas(population);
   return (
     <Link
-      className="block md:flex justify-start flex-col rounded border-solid transition-all align-center no-underline bg-blue"
+      className="block md:flex justify-start flex-col rounded border-solid transition-all align-center no-underline bg-white dark:bg-blue shadow-md"
       href={`/country/${name}`}
       rel="noopener noreferrer"
       // target="_blank"
