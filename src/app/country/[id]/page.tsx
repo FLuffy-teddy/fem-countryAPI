@@ -46,12 +46,12 @@ export default async function CountryPage({ params }: any) {
         <p>Back</p>
       </Link>
       <div className="grid grid-auto-fr lg:grid-cols-2 grid-cols-1">
-        <div className="relative w-full lg:w-11/12 lg:h-auto h-[400px] m-auto">
+        <div className="relative w-full lg:w-11/12 h-[400px] m-auto">
           <Image
             height={0}
             width={0}
             src={country[0].flags.svg}
-            alt={country[0].flagAlt}
+            alt="Countries Flag"
             className="absolute h-full w-full flex object-cover rounded"
           />
         </div>
